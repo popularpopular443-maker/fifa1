@@ -6,6 +6,7 @@
   <title>ArenaAssist & CrowdOps Command - FIFA World Cup 2026</title>
   <meta name="description" content="A GenAI-enabled stadium operations and fan experience companion for the FIFA World Cup 2026.">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 </head>
 <body>
 
@@ -17,14 +18,14 @@
     </div>
     
     <nav class="role-nav">
-      <button class="role-btn active" id="btn-fan-role" data-view="view-fan">
-        <span>🏟️</span> Fan Companion
+      <button class="role-btn active" id="btn-fan-role" data-view="view-fan" aria-pressed="true" aria-label="Switch to Fan Companion view">
+        <span aria-hidden="true">🏟️</span> Fan Companion
       </button>
-      <button class="role-btn" id="btn-staff-role" data-view="view-staff">
-        <span>🦺</span> Ground Ops
+      <button class="role-btn" id="btn-staff-role" data-view="view-staff" aria-pressed="false" aria-label="Switch to Ground Ops view">
+        <span aria-hidden="true">🦺</span> Ground Ops
       </button>
-      <button class="role-btn" id="btn-organizer-role" data-view="view-organizer">
-        <span>📊</span> Command Center
+      <button class="role-btn" id="btn-organizer-role" data-view="view-organizer" aria-pressed="false" aria-label="Switch to Command Center view">
+        <span aria-hidden="true">📊</span> Command Center
       </button>
     </nav>
   </header>
@@ -35,8 +36,8 @@
     <div class="api-key-config glass-card">
       <div class="api-input-group">
         <p>🔑 <strong>Optional Gemini Integration</strong>: Insert a Gemini API Key to run actual real-time Generative AI responses. Otherwise, a smart localized context-aware simulator runs automatically.</p>
-        <input type="password" id="api-key-input" class="api-input" placeholder="AIzaSy...">
-        <button id="save-api-key" class="api-save-btn">Connect Key</button>
+        <input type="password" id="api-key-input" class="api-input" placeholder="AIzaSy..." aria-label="Gemini API Key">
+        <button id="save-api-key" class="api-save-btn" aria-label="Save API Key">Connect Key</button>
       </div>
     </div>
 
@@ -52,7 +53,7 @@
             </div>
 
             <!-- Dynamic Alert Box -->
-            <div id="fan-alert-box" class="glass-card" style="display: none; padding: 0.75rem; border-left: 4px solid var(--warning); background: rgba(255, 159, 26, 0.05); font-size: 0.75rem; color: var(--text-main);">
+            <div id="fan-alert-box" class="glass-card" aria-live="assertive" role="alert" style="display: none; padding: 0.75rem; border-left: 4px solid var(--warning); background: rgba(255, 159, 26, 0.05); font-size: 0.75rem; color: var(--text-main);">
               <strong>⚠️ Stadium Broadcast:</strong> <span id="fan-alert-text">Please proceed with caution...</span>
             </div>
 
@@ -65,7 +66,7 @@
                   <span>AI Live</span>
                 </div>
               </div>
-              <div class="chat-messages" id="fan-chat-messages">
+              <div class="chat-messages" id="fan-chat-messages" aria-live="polite">
                 <div class="message ai">
                   Welcome to FIFA World Cup 2026! I am your <strong>GenAI ArenaAssist</strong>. Ask me anything about gate wait times, security rules, cashless ATMs, or transit back home!
                 </div>
@@ -79,8 +80,8 @@
                   <button class="suggest-btn" data-query="Show sustainability challenges">🌱 Green challenges</button>
                 </div>
                 <form class="chat-form" id="fan-chat-form">
-                  <input type="text" id="fan-chat-input" class="chat-input" placeholder="Type or ask details..." autocomplete="off">
-                  <button type="submit" class="chat-send-btn">➔</button>
+                  <input type="text" id="fan-chat-input" class="chat-input" placeholder="Type or ask details..." autocomplete="off" aria-label="Chat input">
+                  <button type="submit" class="chat-send-btn" aria-label="Send message">➔</button>
                 </form>
               </div>
             </div>

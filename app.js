@@ -298,6 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Newlines to breaks
     formatted = formatted.replace(/\n/g, '<br>');
 
+    // Sanitize generated HTML before returning
+    if (window.DOMPurify) {
+      formatted = DOMPurify.sanitize(formatted);
+    }
     return formatted;
   }
 
